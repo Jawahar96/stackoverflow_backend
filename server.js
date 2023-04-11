@@ -20,21 +20,21 @@ const router=require('./router');
 
 
 
-// const cors=require("cors");
+const cors=require("cors");
 
-// var corsOptions={
-//     origin :"https://localhost:3000"
+var corsOptions={
+    origin :"https://localhost:3000"
     
-// }y
+}
 
 
 
-// app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 
 app.use(bodyParser.json({limit :"50mb"}))
 app.use(bodyParser.urlencoded({extended :true,limit :"50mb"}))
 
-app.use('/question',(req,res)=>{
+app.use('/questions',(req,res)=>{
     res.send("Stackoverflow question")
 })
 app.use((req,res)=>{
@@ -43,10 +43,10 @@ app.use((req,res)=>{
 })
 app.get('/api',(req,res)=>{
     res.json({message :"WELCOME To  STACKOVERFLOW CLONE"})
-    console.log("Server is running ");
+    
 })
 
-// app.use('/api',router)
+app.use('/api',router)
 // app.use('/upload',express.static(path.join(__dirname,'/../uploads')))
 // app.use(express.static(path.join(+__dirname,"/../frontend/build")))
 app.get('*',(res,req)=>{
@@ -58,6 +58,7 @@ app.get('*',(res,req)=>{
     }
 })
 
+
 app.listen(PORT,()=>{
-    console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
+    console.log(`SERVER IS RUNNING ON THE PORT ${PORT}`);
 })
