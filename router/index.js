@@ -8,6 +8,7 @@ const commentRouter=require('./Comment')
 
 router.get('/',(req,res)=>{
     res.send('Welcome to stackoverflow clone')
+    res.json({message : "Connecting to  all database "})
 });
 
 router.use('/question',questionRouter);
