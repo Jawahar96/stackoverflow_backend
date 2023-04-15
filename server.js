@@ -59,8 +59,8 @@ app.get('*',(res,req)=>{
     }
     catch(error){
         console.log(error);
-        // res.send('Error occured')
-        res.status(500).json({message : "Error occured in the system"})
+        res.send('Error occured')
+        // res.status(500).json({message : "Error occured in the system"})
     }
 })
 

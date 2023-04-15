@@ -6,7 +6,7 @@ const questionRouter=require('./Question')
 const answerRouter=require('./Answer')
 const commentRouter=require('./Comment')
 
-router.get('/',(req,res)=>{
+router.get('/home',(req,res)=>{
     res.send('Welcome to stackoverflow clone')
     res.json({message : "Connecting to  all database "})
 });

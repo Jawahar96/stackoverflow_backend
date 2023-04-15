@@ -4,7 +4,7 @@ const router=express.Router();
 
 const Answerdb=require('../models/Answer');
 
-router.post('/', async(req,res)=>{
+router.post('/',async(req,res)=>{
     const answerData=new  Answerdb({
         question_id:req.body.question_id,
         answer:req.body.answer,

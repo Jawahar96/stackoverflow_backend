@@ -17,6 +17,7 @@ router.post('/',async(req,res)=>{
 
     await questiondata.save().then((doc)=>{
     res.status(201).send({
+        
         status :true,
     data:doc
     })
