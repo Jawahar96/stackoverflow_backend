@@ -16,6 +16,7 @@ router.post('/',async(req,res)=>{
             data:doc
         })
     }).catch((err=>{
+       
         res.status(400).send({
             status:false,
             message :"Error while adding answer"
