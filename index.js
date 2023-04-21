@@ -7,8 +7,9 @@ const mongoose =require('mongoose')
 const mongdb = require('mongodb')
 const mongoClient = mongdb.MongoClient
 const cors = require('cors')
-
-const url = 'mongodb://Jawa:5rcVeox9BthsamPR@ac-cdpanzd-shard-00-00.l7ed7t0.mongodb.net:27017,ac-cdpanzd-shard-00-01.l7ed7t0.mongodb.net:27017,ac-cdpanzd-shard-00-02.l7ed7t0.mongodb.net:27017/?ssl=true&replicaSet=atlas-trokem-shard-0&authSource=admin&retryWrites=true&w=majority';
+const dotenv = require('dotenv').config()
+const url = process.env.DB
+// const url = 'mongodb://Jawa:5rcVeox9BthsamPR@ac-cdpanzd-shard-00-00.l7ed7t0.mongodb.net:27017,ac-cdpanzd-shard-00-01.l7ed7t0.mongodb.net:27017,ac-cdpanzd-shard-00-02.l7ed7t0.mongodb.net:27017/?ssl=true&replicaSet=atlas-trokem-shard-0&authSource=admin&retryWrites=true&w=majority';
 const DB = 'Stackoverflow'
 
 const jwt = require('jsonwebtoken')
