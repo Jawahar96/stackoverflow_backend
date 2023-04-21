@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 8080
 const mongoose =require('mongoose')
 const mongdb = require('mongodb')
 const mongoClient = mongdb.MongoClient
+const cors = require('cors')
 
 const url = 'mongodb://Jawa:5rcVeox9BthsamPR@ac-cdpanzd-shard-00-00.l7ed7t0.mongodb.net:27017,ac-cdpanzd-shard-00-01.l7ed7t0.mongodb.net:27017,ac-cdpanzd-shard-00-02.l7ed7t0.mongodb.net:27017/?ssl=true&replicaSet=atlas-trokem-shard-0&authSource=admin&retryWrites=true&w=majority';
 const DB = 'Stackoverflow'
@@ -15,7 +16,11 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// middleware
 app.use(express.json())
+app.use(cors({
+    origin : "http://localhost:3000"
+}))
 
 
 app.get('/',function(req,res){
@@ -162,7 +167,7 @@ app.post('/login',async function(req,res){
   if(users){
    let compare = await bcrypt.compare(req.body.password,users.password)
    if(compare){
-   const  token = jwt.sign({_id : users._id},process.env.SECRET,{expiresIn : "5m"});
+   const  token = jwt.sign({_id : users._id},process.env.SECRET,{expiresIn : "15m"});
 
    res.json({token})
    
