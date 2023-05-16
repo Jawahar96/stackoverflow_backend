@@ -11,7 +11,6 @@ const dotenv = require('dotenv').config()
 const url = process.env.DB
 // const url = 'mongodb://Jawa:5rcVeox9BthsamPR@ac-cdpanzd-shard-00-00.l7ed7t0.mongodb.net:27017,ac-cdpanzd-shard-00-01.l7ed7t0.mongodb.net:27017,ac-cdpanzd-shard-00-02.l7ed7t0.mongodb.net:27017/?ssl=true&replicaSet=atlas-trokem-shard-0&authSource=admin&retryWrites=true&w=majority';
 const DB = 'Stackoverflow'
-
 const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser');
 
@@ -20,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // middleware
 app.use(express.json())
 app.use(cors({
-    origin : "http://localhost:3001"
+    origin : "http://localhost:3000"
 }))
 
 
@@ -168,9 +167,10 @@ app.post('/login',async function(req,res){
   if(users){
    let compare = await bcrypt.compare(req.body.password,users.password)
    if(compare){
-   const  token = jwt.sign({_id : users._id},process.env.SECRET,{expiresIn : "15m"});
+   const  token = jwt.sign({_id : users._id},{expiresIn : "24hrs"});
 
    res.json({token})
+   res.setHeader(email,password)
    
 }else{
     res.json({message : "Login credential failed"})
@@ -179,6 +179,7 @@ app.post('/login',async function(req,res){
   else{
    
     res.status(401).json({message : "Username/password is wrong "})
+    // res.writeHead(statusCode)
   }
 
     }catch(error){

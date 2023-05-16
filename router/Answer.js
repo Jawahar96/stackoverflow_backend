@@ -11,13 +11,13 @@ router.post('/',async(req,res)=>{
         user:req.body.user
     })
     await answerData.save().then((doc)=>{
-        res.status(201).send({
+        res.status(201).json({
             status:true,
             data:doc
         })
     }).catch((err=>{
        
-        res.status(400).send({
+        res.status(400).json({
             status:false,
             message :"Error while adding answer"
         })
